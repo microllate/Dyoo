@@ -13,6 +13,11 @@ import o.dyoo.hook.impl.CleanModeHook
 @InjectYukiHookWithXposed
 class HookEntry : IYukiHookXposedInit {
 
+    override fun onInit() = configs {
+        // 强制使用新版 Xposed 协议 API 101/102
+        isEnableXposedModule = true
+    }
+
     override fun onHook() {
         encase {
             loadApp(name = "com.ss.android.ugc.aweme") {
